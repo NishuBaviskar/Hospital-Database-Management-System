@@ -1,39 +1,44 @@
-create table patient(
-mail_id varchar(20) not null,
-passwd varchar(20) not null,
-P_name varchar(30) not null,
-age numeric(2) not null,
-blood_group varchar(3) not null,
-sex char(1) not null,
-primary key (mail_id)
+-- Active: 1740762505616@@127.0.0.1@3306@test
+-- Create Database
+--- CREATE DATABASE IF NOT EXISTS test;
+USE test;
+
+CREATE TABLE IF NOT EXISTS patient (
+    mail_id VARCHAR(50) NOT NULL,
+    passwd VARCHAR(255) NOT NULL,
+    P_name VARCHAR(30) NOT NULL,
+    age TINYINT NOT NULL,
+    blood_group VARCHAR(3) NOT NULL,
+    sex CHAR(1) NOT NULL,
+    PRIMARY KEY (mail_id)
 );
 
-create table doctor(
-doctor_id varchar(6) not null,
+create table IF NOT EXISTS doctor(
+doctor_id varchar(20) not null,
 passwd varchar(29) not null,
 doctor_name varchar(30) not null,
 availaible_date date ,
 primary key (doctor_id)
 );
 
-create table appointment(
+create table IF NOT EXISTS appointment(
 mail_id varchar(20) not null,
 date_appointment date not null,
-doctor_id varchar(6) not null,
+doctor_id varchar(20) not null,
 primary key(mail_id,date_appointment,doctor_id),
 foreign key (mail_id) references patient(mail_id),
 foreign key(doctor_id) references doctor(doctor_id)
 );
 
-create table medicines(
-medicine_id varchar(6) not null,
+create table IF NOT EXISTS medicines(
+medicine_id varchar(20) not null,
 medicine_name varchar(30) not null,
 primary key(medicine_id)
 );
 
-create table takes(
+create table IF NOT EXISTS takes(
 mail_id varchar(20) not null,
-medicine_id varchar(6) not null,
+medicine_id varchar(20) not null,
 quantity numeric(3) not null,
 takes_date date not null,
 primary key(mail_id,medicine_id,takes_date),
@@ -41,30 +46,30 @@ foreign key (medicine_id) references medicines(medicine_id),
 foreign key (mail_id) references patient(mail_id)
 );
 
-create table specialization(
-spec_id varchar(6) not null,
+create table IF NOT EXISTS specialization(
+spec_id varchar(20) not null,
 spec_name varchar(20) not null,
 primary key(spec_id)
 );
 
-create table expert_in(
-doctor_id varchar(6) not null,
-spec_id varchar(6) not null,
+create table IF NOT EXISTS expert_in(
+doctor_id varchar(20) not null,
+spec_id varchar(20) not null,
 primary key(doctor_id,spec_id),
 foreign key(doctor_id )references doctor(doctor_id),
 foreign key(spec_id) references specialization(spec_id)
 );
 
-create table nurse(
-nurse_id varchar(6) not null,
+create table IF NOT EXISTS nurse(
+nurse_id varchar(20) not null,
 nurse_name varchar(20) not null,
 phone_number numeric(10) not null,
 primary key (nurse_id)
 );
 
-create table nursealloc(
+create table IF NOT EXISTS nursealloc(
 doctor_id varchar(20) not null,
-nurse_id varchar(6) not null,
+nurse_id varchar(20) not null,
 mail_id varchar(20) not null,
 date_in date not null,
 date_out date,
@@ -74,15 +79,15 @@ foreign key (nurse_id) references nurse(nurse_id),
 foreign key(doctor_id )references doctor(doctor_id)
 );
 
-create table donation(
-donation_id varchar(6) not null,
+create table IF NOT EXISTS donation(
+donation_id varchar(20) not null,
 donation_type varchar(20) not null,
 primary key(donation_id)
 );
 
-create table donate(
+create table IF NOT EXISTS donate(
 mail_id varchar(20) not null,
-donation_id varchar(6) not null,
+donation_id varchar(20) not null,
 donation_date date not null,
 primary key(mail_id,donation_date,donation_id),
 foreign key (mail_id) references patient(mail_id),
@@ -91,23 +96,23 @@ foreign key (donation_id) references donation(donation_id)
 
 
 
-create table tests(
-test_id varchar(6) not null,
+create table IF NOT EXISTS tests(
+test_id varchar(20) not null,
 test_name varchar(20) not null,
 primary key(test_id)
 );
 
-create table record(
+create table IF NOT EXISTS record(
 mail_id varchar(20) not null,
-record_id varchar(6) not null,
+record_id varchar(20) not null,
 record_analysis text,
 primary key(mail_id,record_id),
 foreign key(mail_id) references patient(mail_id)
 );
 
-create table test_descrp(
+create table IF NOT EXISTS test_descrp(
 mail_id varchar(20) not null,
-test_id varchar(6) not null,
+test_id varchar(20) not null,
 test_date date,
 test_analysis text,
 primary key(mail_id,test_id,test_date),
@@ -115,13 +120,13 @@ foreign key(test_id) references tests(test_id),
 foreign key(mail_id) references patient(mail_id)
 );
 
-create table rooms(
+create table IF NOT EXISTS rooms(
 room_no varchar(6),
 block_no varchar(6),
 primary key(room_no,block_no)
 );
 
-create table bookings(
+create table IF NOT EXISTS bookings(
 mail_id varchar(20),
 room_no varchar(6),
 block_no varchar(6),
@@ -132,14 +137,14 @@ foreign key (mail_id) references patient(mail_id),
 foreign key(room_no,block_no) references rooms(room_no,block_no)
 );
 
-create table receptionist(
+create table IF NOT EXISTS receptionist(
 mail_id varchar(20),
 passwd varchar(20),
 receptionist_name varchar(20)
 );
 
 insert into patient values('cse@ac.in','123','shiva',18,'o+','m');
-insert into patient values('cse@ac.ip','1234','shiva',18,'o+','m');
+insert into patient values('cse@ac.ip','1234','shivaa',18,'o+','m');
 insert into patient(mail_id,passwd,P_name,age,blood_group,sex)
 values
   ('a1@iiti.ac.in','123','john',22,'O+','M'),
@@ -242,3 +247,22 @@ values
   ('101b','kalam'),
   ('505','shivan'),
   ('303','steve');
+  
+SELECT* FROM patient;
+SHOW tables;
+SELECT* FROM appointment;
+SELECT* FROM bookings;
+SELECT* FROM doctor;
+SELECT* FROM donate;
+SELECT* FROM donation;
+SELECT* FROM expert_in;
+SELECT* FROM medicines;
+SELECT* FROM nurse;
+SELECT* FROM nursealloc;
+SELECT* FROM receptionist;
+SELECT* FROM record;
+SELECT* FROM rooms;
+SELECT* FROM specialization;
+SELECT* FROM takes;
+SELECT* FROM test_descrp;
+SELECT* FROM tests;

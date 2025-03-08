@@ -2,15 +2,15 @@ from flask import Flask, render_template, request, redirect, url_for,session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+from flask import flash
 
 app=Flask(__name__)
 
 app.secret_key = 'your secret key'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_PASSWORD'] = 'Nishu@230505'
 app.config['MYSQL_DB'] = 'test'
-
 mysql = MySQL(app)
 
 
@@ -412,12 +412,12 @@ def doctor_register():
         passwd = request.form['passwd']
         doctor_name = request.form['doctor_name']
         availaible_date=request.form['availaible_date']
-        cursor.execute('SELECT * FROM doctor WHERE doctor_id = % s', (doctor_id, ))
+        cursor.execute('SELECT * FROM doctor WHERE doctor_id = %s', (doctor_id, ))
         doctor = cursor.fetchone()
         if doctor:
             msg = 'Account already exists !'
         else:
-            cursor.execute('INSERT INTO doctor VALUES (% s, % s,% s, % s)', (doctor_id, passwd,doctor_name, availaible_date))
+            cursor.execute('INSERT INTO doctor VALUES (%s, %s,%s, %s)', (doctor_id, passwd,doctor_name, availaible_date))
             conn.commit()
             msg = 'You have successfully registered !'
             return redirect(url_for('doctor_index'))

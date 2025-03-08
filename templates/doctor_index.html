@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <title>IITI-HEALTH</title>
+
+<head>
+    <title>Tech-HEALTH</title>
     <link rel="stylesheet" href="../static/patient_home_page.css">
-  </head>
-  <body style="background-image:url('../static/hospital2.jpg')">
-    <div id="top-border">IITI-HEALTH</div>
+</head>
+
+<body style="background-image:url('../static/hospital2.jpg')">
+    <div id="top-border">Tech-HEALTH</div>
     <ul id="unordered-list-1">
-      <li></li>
-      <li></li>
-      <li><a href="https://www.iiti.ac.in/">About-us</a></li>
-      <li><a href="{{url_for('nurse_alloc')}}">Allocate_nurse</a></li>
-      <li><a href="{{url_for('doctors_data')}}">Doctors-profiles</a></li>
-      <li><a href="#">My account</a>
-      <ul>
-        <li><a href="{{url_for('doctor_display')}}">Display</a></li>
-        <li><a href="{{url_for('doctor_update')}}">Update</a></li>
-        <li><a href="{{url_for('doctor_logout')}}">Logout</a></li>
-      </ul></li>
-      <li><a href="https://www.iiti.ac.in/page/contactus">Contacts</a></li>
+        <li></li>
+        <li></li>
+        <li><a href="https://www.linkedin.com/in/nishu-baviskar-21a0b428b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B3Znf9B3AQGysypt5rSfEKQ%3D%3D">About-us</a></li>
+        <li><a href="{{url_for('nurse_alloc')}}">Allocate_nurse</a></li>
+        <li><a href="{{url_for('doctors_data')}}">Doctors-profiles</a></li>
+        <li><a href="#">My account</a>
+            <ul>
+                <li><a href="{{url_for('doctor_display')}}">Display</a></li>
+                <li><a href="{{url_for('doctor_update')}}">Update</a></li>
+                <li><a href="{{url_for('doctor_logout')}}">Logout</a></li>
+            </ul>
+        </li>
+        <li><a href="https://www.linkedin.com/in/nishu-baviskar-21a0b428b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B3Znf9B3AQGysypt5rSfEKQ%3D%3D">Contacts</a></li>
 
     </ul>
     <div class="msg">{{ msg }}</div>
     <div id="Appointment-box"><a href="{{url_for('pre_patient_record')}}">view patient_record</a></div>
-  </body>
+</body>
+
 </html>

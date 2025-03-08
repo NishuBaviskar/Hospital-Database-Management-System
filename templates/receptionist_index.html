@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <title>IITI-HEALTH</title>
+
+<head>
+    <title>Tech-HEALTH</title>
     <link rel="stylesheet" href="../static/patient_home_page.css">
-  </head>
-  <body>
-    <div id="top-border">IITI-HEALTH</div>
+</head>
+
+<body>
+    <div id="top-border">Tech-HEALTH</div>
     <ul id="unordered-list-1">
-      <li></li>
-      <li></li>
-      <li><a href="{{url_for('takes')}}">medicines</a></li>
-      <li><a href="{{url_for('update_tests')}}">update-tests</a></li>
-      <li><a href="{{url_for('allocate_rooms')}}">allocate_rooms</a></li>
-            <li><a href="{{url_for('update_record')}}">update-record</a></li>
-            <li><a href="{{url_for('pre_rec_appointment')}}">Appointments</a></li>
-      <li><a href="#">My account</a>
-      <ul>
-        <li><a href="{{url_for('receptionist_display')}}">Display</a></li>
-        <li><a href="{{url_for('receptionist_update')}}">Update</a></li>
-        <li><a href="{{url_for('receptionist_logout')}}">Logout</a></li>
-      </ul>
-    </li>
+        <li></li>
+        <li></li>
+        <li><a href="{{url_for('takes')}}">medicines</a></li>
+        <li><a href="{{url_for('update_tests')}}">update-tests</a></li>
+        <li><a href="{{url_for('allocate_rooms')}}">allocate_rooms</a></li>
+        <li><a href="{{url_for('update_record')}}">update-record</a></li>
+        <li><a href="{{url_for('pre_rec_appointment')}}">Appointments</a></li>
+        <li><a href="#">My account</a>
+            <ul>
+                <li><a href="{{url_for('receptionist_display')}}">Display</a></li>
+                <li><a href="{{url_for('receptionist_update')}}">Update</a></li>
+                <li><a href="{{url_for('receptionist_logout')}}">Logout</a></li>
+            </ul>
+        </li>
 
 
 
-    <div class="msg">{{ msg }}</div>
-    <div id="Appointment-box"><a href="{{url_for('nurse_info')}}">update-nurse_info</a></div>
-  </body>
+        <div class="msg">{{ msg }}</div>
+        <div id="Appointment-box"><a href="{{url_for('nurse_info')}}">update-nurse_info</a></div>
+</body>
+
 </html>
