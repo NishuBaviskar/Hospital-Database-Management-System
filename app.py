@@ -6,11 +6,18 @@ from flask import flash
 
 app=Flask(__name__)
 
-app.secret_key = 'your secret key'
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Nishu@230505'
-app.config['MYSQL_DB'] = 'test'
+#app.secret_key = 'your secret key'
+#app.config['MYSQL_HOST'] = 'localhost'
+#app.config['MYSQL_USER'] = 'root'
+#app.config['MYSQL_PASSWORD'] = 'Nishu@230505'
+#app.config['MYSQL_DB'] = 'test'
+
+app.config['MYSQL_HOST'] = "maglev.proxy.rlwy.net"
+app.config['MYSQL_USER'] = "root"
+app.config['MYSQL_PASSWORD'] = "YnannaKMEJNZRUnJlXFoXdKBrcHxtdHW"  # Replace with actual password
+app.config['MYSQL_DB'] = "railway"
+app.config['MYSQL_PORT'] = 47480
+
 mysql = MySQL(app)
 
 
